@@ -33,3 +33,9 @@ G = db.to_networkx()
 nx.draw(G)
 ```
 
+Get Edges with the property "action = features"
+
+```python
+eout = db.get_edges(source=5, predicate={'action': 'features'})
+```
+
