@@ -49,6 +49,22 @@ class GraphDB:
 
         return self.atomic(_find_node)
 
+    def get_nodes(self, nodes=None, predicate=None, operator="="):
+        def _find_node(cursor):
+            search = " WHERE 1=1 "
+            if predicate:
+                search += "AND " + " AND ".join(
+                    ["json_extract(nodes.body, '$.{}') {} '{}'".format(k, operator, str(predicate[k])) for k in
+                     predicate.keys()])
+            if nodes:
+                search += " AND nodes.id IN {}".format(GraphDB._get_identifier_string(nodes))
+            results = cursor.execute("SELECT * FROM nodes {}".format(search)).fetchall()
+            if len(results) >= 0:
+                return GraphDB._parse_search_results(results)
+            return results
+
+        return self.atomic(_find_node)
+
     def update(self, data):
         assert data["id"] is not None, "id is not specified"
 

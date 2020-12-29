@@ -39,3 +39,20 @@ Get Edges with the property "action = features"
 eout = db.get_edges(source=5, predicate={'action': 'features'})
 ```
 
+Get Nodes
+
+```python
+db.get_nodes()
+```
+
+Search Nodes
+
+```python
+db.get_nodes(predicate={'name': 'p1'})
+```
+Search in set of nodes
+
+```python
+nodes = db.get_nodes(predicate={'type': 'person'})
+db.get_nodes(nodes=nodes, predicate={'name': 'p1'})
+```
