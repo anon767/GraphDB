@@ -1,6 +1,6 @@
 # GraphDB
 
-GraphDB is a graph database using SQLite3 for Python.
+GraphDB is a wrapper providing graph traversal functionality over SQLite3 for Python.
 Check out [Recommendation Example](Recommendation.ipynb) for sample usage.
 
 Inspired by [Simple-Graph](https://github.com/dpapathanasiou/simple-graph) but even simpler
